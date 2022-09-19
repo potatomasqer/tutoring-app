@@ -43,7 +43,7 @@ class ViewController: UIViewController,UITextFieldDelegate, CLLocationManagerDel
         else{time = String(dateTimeComponents.hour!) + ": 0" + String(dateTimeComponents.minute!)}
         
         CurrentTime.text = time
-        CurentDate = String(dateTimeComponents.month!) + " " + String(dateTimeComponents.day!)
+        CurentDate = String(dateTimeComponents.month!) + "/" + String(dateTimeComponents.day!) + ", " + time
     }
 
     
@@ -53,8 +53,9 @@ class ViewController: UIViewController,UITextFieldDelegate, CLLocationManagerDel
         NameTextField.text = defults.string(forKey: "Name")
         StudentID.text = defults.string(forKey: "StudentID")
         let SBName = defults.string(forKey: "signIn")
-        print(SBName!)
-        signInButton.setTitle(SBName, for: .normal)
+        if SBName == "Sign out"{
+            signInButton.setTitle(SBName, for: .normal)
+        }
         
         if defults.string(forKey: "Statekey") == "Signed in"{
             State = defults.string(forKey: "Statekey") ?? State
@@ -89,22 +90,23 @@ class ViewController: UIViewController,UITextFieldDelegate, CLLocationManagerDel
             State = "Signed in"
             signInButton.setTitle("Sign out", for: .normal)
             
+            localData.append(String(State + ", " + CurentDate + "; " + name + ", " + id))
             
+            tableView.reloadData()
+            print(localData)
+
             defults.set(State, forKey: "Statekey")
             defults.set("Sign out", forKey: "signIn")
             
+        }else if State == "Signed in" { //state = signed in
+            State = "Signed out"
+            signInButton.setTitle("Sign in", for: .normal)
             
             localData.append(String(State + ", " + CurentDate + "; " + name + ", " + id))
             
             tableView.reloadData()
             print(localData)
             
-            
-        }else if State == "Signed in" { //state = signed in
-            State = "Signed out"
-            
-            
-            signInButton.setTitle("Sign in", for: .normal)
             defults.set(State, forKey: "Statekey")
             defults.set("Sign in", forKey: "signIn")
             
@@ -128,7 +130,7 @@ class ViewController: UIViewController,UITextFieldDelegate, CLLocationManagerDel
 
         if locations.first != nil {
             //print("location:: (location)")
-            let l = 1+1
+            let l = 1+1 //here so it dont print anything anoying
         }
     }
     
