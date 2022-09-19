@@ -52,8 +52,9 @@ class ViewController: UIViewController,UITextFieldDelegate, CLLocationManagerDel
         super.viewDidLoad()
         NameTextField.text = defults.string(forKey: "Name")
         StudentID.text = defults.string(forKey: "StudentID")
-        
-        signInButton.setTitle(defults.string(forKey: "signIn"), for: .normal)
+        let SBName = defults.string(forKey: "signIn")
+        print(SBName!)
+        signInButton.setTitle(SBName, for: .normal)
         
         if defults.string(forKey: "Statekey") == "Signed in"{
             State = defults.string(forKey: "Statekey") ?? State
@@ -87,18 +88,25 @@ class ViewController: UIViewController,UITextFieldDelegate, CLLocationManagerDel
             //print((String(location!.coordinate.latitude) + ", " + String(location!.coordinate.longitude)) )
             State = "Signed in"
             signInButton.setTitle("Sign out", for: .normal)
+            
+            
             defults.set(State, forKey: "Statekey")
-            defults.set(signInButton.titleLabel?.text, forKey: "signIn")
+            defults.set("Sign out", forKey: "signIn")
+            
+            
             localData.append(String(State + ", " + CurentDate + "; " + name + ", " + id))
+            
             tableView.reloadData()
             print(localData)
             
             
         }else if State == "Signed in" { //state = signed in
             State = "Signed out"
+            
+            
             signInButton.setTitle("Sign in", for: .normal)
             defults.set(State, forKey: "Statekey")
-            defults.set(signInButton.titleLabel?.text, forKey: "signIn")
+            defults.set("Sign in", forKey: "signIn")
             
         }
         //print(State)
@@ -119,7 +127,8 @@ class ViewController: UIViewController,UITextFieldDelegate, CLLocationManagerDel
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 
         if locations.first != nil {
-            print("location:: (location)")
+            //print("location:: (location)")
+            let l = 1+1
         }
     }
     
