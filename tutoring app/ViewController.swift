@@ -130,7 +130,7 @@ class ViewController: UIViewController,UITextFieldDelegate, CLLocationManagerDel
 
         if locations.first != nil {
             //print("location:: (location)")
-            let l = 1+1 //here so it dont print anything anoying
+            _ = 1+1 //here so it dont print anything anoying
         }
     }
     
