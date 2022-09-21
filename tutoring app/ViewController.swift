@@ -5,9 +5,17 @@
 //  Created by Aaron K. Brey on 9/7/22.
 //
 
+//apple stuff
 import UIKit
 import CoreLocation
 import CoreLocationUI
+
+//firebase stuff
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseAuth
+import FirebaseDatabase
+import FirebaseAppCheck
 class ViewController: UIViewController,UITextFieldDelegate, CLLocationManagerDelegate,UITableViewDelegate,UITableViewDataSource {
     
     @IBOutlet weak var CurrentTime: UITextView!
@@ -23,7 +31,7 @@ class ViewController: UIViewController,UITextFieldDelegate, CLLocationManagerDel
     var State = "Signed out"
     let locationManager = CLLocationManager()
     var localData: [String] = []
-    
+
     func updateTime(){
         let userCalendar = Calendar.current
         let currentDateTime = Date()
@@ -68,6 +76,13 @@ class ViewController: UIViewController,UITextFieldDelegate, CLLocationManagerDel
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
+        
+        //firebase set up
+        let firebase = FirebaseApp.app()
+        firebase.configure()
+        var ref: DatabaseReference!
+
+        ref = Database.database().reference()
         
     }
     
