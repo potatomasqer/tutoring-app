@@ -59,6 +59,10 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        overrideUserInterfaceStyle = .light
+        
+        
+        
         NameField.text = defaults.string(forKey: "Name")
         StudentIDField.text = defaults.string(forKey: "StudentID")
         let SBName = defaults.string(forKey: "signIn")
@@ -76,6 +80,8 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
+        print(CLLocationManager.locationServicesEnabled())
+        
         locationManager.requestLocation()
         
         //firebase set up
