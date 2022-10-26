@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		711F680F28E4A97500B056C4 /* ViewControllerTheta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711F680E28E4A97500B056C4 /* ViewControllerTheta.swift */; };
 		9810E9FF28DD3B2C002B172A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9810E9FE28DD3B2C002B172A /* AppDelegate.swift */; };
 		9810EA0128DD3B2C002B172A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9810EA0028DD3B2C002B172A /* SceneDelegate.swift */; };
 		9810EA0328DD3B2C002B172A /* TutorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9810EA0228DD3B2C002B172A /* TutorController.swift */; };
@@ -66,7 +65,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		711F680E28E4A97500B056C4 /* ViewControllerTheta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTheta.swift; sourceTree = "<group>"; };
 		9810E9FB28DD3B2C002B172A /* firebase-coping-strats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "firebase-coping-strats.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9810E9FE28DD3B2C002B172A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9810EA0028DD3B2C002B172A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -164,7 +162,6 @@
 				98EB5B2C28E52BB100892544 /* ViewController.swift */,
 				9810EA0228DD3B2C002B172A /* TutorController.swift */,
 				9810EA0428DD3B2C002B172A /* Main.storyboard */,
-				711F680E28E4A97500B056C4 /* ViewControllerTheta.swift */,
 				9810EA0728DD3B2E002B172A /* Assets.xcassets */,
 				9810EA0928DD3B2E002B172A /* LaunchScreen.storyboard */,
 				9810EA0C28DD3B2E002B172A /* Info.plist */,
@@ -354,13 +351,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< Updated upstream
 				98EB5B2D28E52BB100892544 /* ViewController.swift in Sources */,
 				9810EA0328DD3B2C002B172A /* TutorController.swift in Sources */,
-=======
-				9810EA0328DD3B2C002B172A /* ViewController.swift in Sources */,
-				711F680F28E4A97500B056C4 /* ViewControllerTheta.swift in Sources */,
->>>>>>> Stashed changes
 				9810E9FF28DD3B2C002B172A /* AppDelegate.swift in Sources */,
 				9810EA0128DD3B2C002B172A /* SceneDelegate.swift in Sources */,
 			);
