@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import CoreLocationUI
+import SwiftUI
 
 //firebase
 import FirebaseCore
@@ -61,7 +62,8 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         
         overrideUserInterfaceStyle = .light
         
-        
+        AuthButton.titleLabel?.font = UIFont.systemFont(ofSize: 36)
+
         
         NameField.text = defaults.string(forKey: "Name")
         StudentIDField.text = defaults.string(forKey: "StudentID")
@@ -109,8 +111,9 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         if State == "signed out"{
             //sign in
             State = "signed in"
-            AuthButton.setTitle("Sign out", for: .normal)
-            
+            AuthButton.setTitle("Sign Out", for: .normal)
+            AuthButton.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 36)
+
             localData.append(String(State + ", " + CurentDate + "; " + name + ", " + id))
             
             print(localData)
@@ -126,7 +129,8 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
             
         }else if State == "signed in" { //state = signed in
             State = "signed out"
-            AuthButton.setTitle("Sign in", for: .normal)
+            AuthButton.setTitle("Sign In", for: .normal)
+            AuthButton.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 36)
             
             localData.append(String(State + ", " + CurentDate + "; " + name + ", " + id))
             
