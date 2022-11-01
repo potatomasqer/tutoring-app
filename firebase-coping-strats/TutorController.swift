@@ -82,7 +82,6 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        print(CLLocationManager.locationServicesEnabled())
         
         locationManager.requestLocation()
         
@@ -105,6 +104,13 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         StudentIDField.resignFirstResponder()
         NameField.resignFirstResponder()
         
+
+        if CLLocationManager.locationServicesEnabled(){
+            if (locationManager.authorizationStatus == .denied || locationManager.authorizationStatus == .notDetermined){
+                locationManager.requestWhenInUseAuthorization()
+            }
+        }else{locationManager.requestWhenInUseAuthorization()}
+        
         //location stuff
         let location = locationManager.location
         let cords = String(location?.coordinate.latitude ?? 42.07986484) + ", " + String(location?.coordinate.longitude ?? -87.95008105)
@@ -116,7 +122,7 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
 
             localData.append(String(State + ", " + CurentDate + "; " + name + ", " + id))
             
-            print(localData)
+            
 
             defaults.set(State, forKey: "Statekey")
             defaults.set("Sign out", forKey: "signIn")
@@ -132,9 +138,14 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
             AuthButton.setTitle("Sign In", for: .normal)
             AuthButton.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 36)
             
+            if CLLocationManager.locationServicesEnabled(){
+                if (locationManager.authorizationStatus == .denied || locationManager.authorizationStatus == .notDetermined){
+                    locationManager.requestWhenInUseAuthorization()
+                }
+            }else{locationManager.requestWhenInUseAuthorization()}
             localData.append(String(State + ", " + CurentDate + "; " + name + ", " + id))
             
-            print(localData)
+            
             
             defaults.set(State, forKey: "Statekey")
             defaults.set("Sign in", forKey: "signIn")
