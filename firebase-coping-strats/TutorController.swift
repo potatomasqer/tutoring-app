@@ -151,7 +151,6 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
             defaults.set("Sign in", forKey: "signIn")
 
             updateTime()
-            
             let ref = Database.database().reference()
             ref.childByAutoId().setValue(["name":name, "studentid":id, "time":CurentDate, "state":State,"location":cords])
             
