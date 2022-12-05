@@ -12,11 +12,6 @@ import CoreLocationUI
 import SwiftUI
 
 //firebase
-import FirebaseCore
-import FirebaseFirestore
-import FirebaseAuth
-import FirebaseDatabase
-import FirebaseAppCheck
 
 class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate {
     
@@ -26,6 +21,8 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
     @IBOutlet weak var SignLabel: UILabel!
     @IBOutlet weak var StudentIDField: UITextField!
     @IBOutlet weak var StateLabel: UILabel!
+    
+    var FireBase = FBC()
     
     let defaults = UserDefaults.standard
     var startTime = "Time signed in today"
@@ -84,14 +81,6 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         locationManager.requestWhenInUseAuthorization()
         
         locationManager.requestLocation()
-        
-        //firebase set up
-        //let firebase = FirebaseApp.app()
-        //firebase.configure()
-        //var ref: DatabaseReference!
-
-        //ref = Database.database().reference()
-        
     }
     
     @IBAction func SignIn(_ sender: UIButton) {
@@ -128,8 +117,7 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
             defaults.set("Sign out", forKey: "signIn")
             updateTime()
             
-            let ref = Database.database().reference()
-            ref.childByAutoId().setValue(["name":name, "studentid":id, "time":CurentDate, "state":State,"location":cords])
+            FireBase.Push(Data: ["name":name, "studentid":id, "time":CurentDate, "state":State,"location":cords], User: name+id)
             
             StateLabel.text = "You are currently " + State + "."
             
@@ -151,8 +139,7 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
             defaults.set("Sign in", forKey: "signIn")
 
             updateTime()
-            let ref = Database.database().reference()
-            ref.childByAutoId().setValue(["name":name, "studentid":id, "time":CurentDate, "state":State,"location":cords])
+            FireBase.Push(Data: ["name":name, "studentid":id, "time":CurentDate, "state":State,"location":cords], User: name+id)
             
             StateLabel.text = "You are currently " + State + "."
             
