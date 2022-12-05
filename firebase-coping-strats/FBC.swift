@@ -20,7 +20,7 @@ import FirebaseAppCheck
 class FBC{
     let FirebaseRefrence = Database.database(url: "https://tutor-6e628-default-rtdb.firebaseio.com/").reference()
     let PermRefrence = "https://tutor-6e628-default-rtdb.firebaseio.com/perm/"
-    let TempRefrence = "https://tutor-6e628-default-rtdb.firebaseio.com/temp/"
+    let BaseRefrence = "https://tutor-6e628-default-rtdb.firebaseio.com/"
     //init
     public func FBC(){
         
@@ -28,8 +28,8 @@ class FBC{
     
     //push to firebase
     public func Push(Data:Dictionary<String, Any>,User: String){
-        Database.database(url: TempRefrence).reference().setValue(Data)
-        Database.database(url: PermRefrence+User+"/").reference().setValue(Data)
+        Database.database(url: BaseRefrence).reference().child("/temp/").childByAutoId().setValue(Data)
+        Database.database(url: BaseRefrence).reference().child("/perm/"+User+"/").childByAutoId().setValue(Data)
     }
     public func Pull(User: String) async -> Any{
         do{
