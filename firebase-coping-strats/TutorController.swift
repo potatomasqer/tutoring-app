@@ -22,7 +22,9 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
     @IBOutlet weak var StudentIDField: UITextField!
     @IBOutlet weak var StateLabel: UILabel!
     
+    
     var FireBase = FBC()
+    
     
     let defaults = UserDefaults.standard
     var startTime = "Time signed in today"
@@ -31,6 +33,8 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
     var State = "signed out"
     let locationManager = CLLocationManager()
     var localData: [String] = []
+    
+    var authorized = false
 
     func updateTime(){
         let userCalendar = Calendar.current
@@ -93,12 +97,11 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         StudentIDField.resignFirstResponder()
         NameField.resignFirstResponder()
         
-
-        if CLLocationManager.locationServicesEnabled(){
-            if (locationManager.authorizationStatus == .denied || locationManager.authorizationStatus == .notDetermined){
-                locationManager.requestWhenInUseAuthorization()
-            }
-        }else{locationManager.requestWhenInUseAuthorization()}
+        
+        authorized = defaults.bool(forKey: "authorized")
+        if !authorized{
+            locationManager.requestWhenInUseAuthorization()
+        }
         
         //location stuff
         let location = locationManager.location
@@ -126,11 +129,10 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
             AuthButton.setTitle("Sign In", for: .normal)
             AuthButton.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 36)
             
-            if CLLocationManager.locationServicesEnabled(){
-                if (locationManager.authorizationStatus == .denied || locationManager.authorizationStatus == .notDetermined){
-                    locationManager.requestWhenInUseAuthorization()
-                }
-            }else{locationManager.requestWhenInUseAuthorization()}
+            authorized = defaults.bool(forKey: "authorized")
+            if !authorized{
+                locationManager.requestWhenInUseAuthorization()
+            }
             localData.append(String(State + ", " + CurentDate + "; " + name + ", " + id))
             
             
@@ -153,9 +155,13 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
     }
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse {
+        if status == .authorizedWhenInUse || status == .authorizedAlways{
             locationManager.requestLocation()
+            authorized = true
+        }else{
+            authorized = false
         }
+        defaults.set(authorized, forKey: "authorized")
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
