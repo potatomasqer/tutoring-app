@@ -31,7 +31,7 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
     var startDate:String = ""
     var CurentDate:String = ""
     var State = "signed out"
-    let locationManager = CLLocationManager()
+    var locationManager = CLLocationManager()
     var localData: [String] = []
     
     var authorized = false
@@ -64,7 +64,9 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         overrideUserInterfaceStyle = .light
         
         AuthButton.titleLabel?.font = UIFont.systemFont(ofSize: 36)
-
+        
+        locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.startUpdatingLocation()
         
         NameField.text = defaults.string(forKey: "Name")
         StudentIDField.text = defaults.string(forKey: "StudentID")
@@ -87,6 +89,8 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         
         locationManager.requestLocation()
         
+        locationManager.allowsBackgroundLocationUpdates = true
+        
         //let logs = FireBase.Pull(User: String(NameField.text!)+"223073")
         //print(logs)
     }
@@ -108,6 +112,7 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         
         //location stuff
         let location = locationManager.location
+        locationManager.requestLocation()
         let cords = String(location?.coordinate.latitude ?? 42.07986484) + ", " + String(location?.coordinate.longitude ?? -87.95008105)
         if State == "signed out"{
             //sign in
@@ -132,7 +137,7 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
             
             authorized = defaults.bool(forKey: "authorized")
             if !authorized{
-                locationManager.requestWhenInUseAuthorization()
+                locationManager.requestAlwaysAuthorization()
             }
             localData.append(String(State + ", " + CurentDate + "; " + name + ", " + id))
             
@@ -168,17 +173,7 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-
-        if locations.first != nil {
-            //print("location:: (location)")
-            _ = 1+1 //here so it dont print anything anoying
-        }
+        continue
     }
-    
-    
-    //table view stuff
-    
-    
-    
 }
 

@@ -543,6 +543,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "firebase-coping-strats/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Tutoring App";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app uses location for conformation that you are infact in the library ";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -572,6 +573,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "firebase-coping-strats/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Tutoring App";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app uses location for conformation that you are infact in the library ";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

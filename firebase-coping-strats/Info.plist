@@ -2,8 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app uses location for conformation that you are infact in the library </string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>your location is shared for efficency reasons</string>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>BGAppRefreshTaskRequest</string>
+		<string>BGProcessingTaskRequest</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -23,5 +28,9 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 </dict>
 </plist>
