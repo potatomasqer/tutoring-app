@@ -13,7 +13,7 @@ import SwiftUI
 
 //firebase
 
-class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate {
+class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate,UITableViewDelegate {
     
     @IBOutlet weak var CurrentTime: UITextView!
     @IBOutlet weak var NameField: UITextField!
@@ -71,6 +71,7 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         let SBName = defaults.string(forKey: "signIn")
         if SBName == "Sign out"{
             AuthButton.setTitle(SBName, for: .normal)
+                
         }
         
         if defaults.string(forKey: "Statekey") == "signed in"{
@@ -85,17 +86,19 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         locationManager.requestWhenInUseAuthorization()
         
         locationManager.requestLocation()
+        
+        //let logs = FireBase.Pull(User: String(NameField.text!)+"223073")
+        //print(logs)
     }
     
-    @IBAction func SignIn(_ sender: UIButton) {
+    
+    @IBAction func SignIn(_ sender: UIButton){
         updateTime()
         let name = NameField.text!
         defaults.set(name, forKey: "Name")
         let id = StudentIDField.text!
         defaults.set(id, forKey: "StudentID")
         
-        StudentIDField.resignFirstResponder()
-        NameField.resignFirstResponder()
         
         
         authorized = defaults.bool(forKey: "authorized")
@@ -110,7 +113,6 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
             //sign in
             State = "signed in"
             AuthButton.setTitle("Sign Out", for: .normal)
-            AuthButton.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 36)
 
             localData.append(String(State + ", " + CurentDate + "; " + name + ", " + id))
             
@@ -127,7 +129,6 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         }else if State == "signed in" { //state = signed in
             State = "signed out"
             AuthButton.setTitle("Sign In", for: .normal)
-            AuthButton.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 36)
             
             authorized = defaults.bool(forKey: "authorized")
             if !authorized{
@@ -144,6 +145,8 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
             FireBase.Push(Data: ["name":name, "studentid":id, "time":CurentDate, "state":State,"location":cords], User: name+id)
             
             StateLabel.text = "You are currently " + State + "."
+            
+            
             
         }
         //print(State)
@@ -171,5 +174,11 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
             _ = 1+1 //here so it dont print anything anoying
         }
     }
+    
+    
+    //table view stuff
+    
+    
+    
 }
 

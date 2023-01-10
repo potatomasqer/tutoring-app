@@ -3,4 +3,70 @@
    uuid = "D5A60006-2257-4D49-94B2-5AB09856CCD3"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C794B9B4-212E-45DF-A0B1-7E6BB9CF5283"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "firebase-coping-strats/TutorController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "SignIn(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C794B9B4-212E-45DF-A0B1-7E6BB9CF5283 - 69a8766fc24768e4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "firebase_coping_strats.TutorController.SignIn(__C.UIButton) -&gt; ()"
+                  moduleName = "firebase-coping-strats"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abrey3073/Documents/GitHub/tutoring-app/firebase-coping-strats/TutorController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "111"
+                  endingLineNumber = "111"
+                  offsetFromSymbolStart = "1692">
+               </Location>
+               <Location
+                  uuid = "C794B9B4-212E-45DF-A0B1-7E6BB9CF5283 - 69a8766fc24768e4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "firebase_coping_strats.TutorController.SignIn(__C.UIButton) -&gt; ()"
+                  moduleName = "firebase-coping-strats"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abrey3073/Documents/GitHub/tutoring-app/firebase-coping-strats/TutorController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "111"
+                  endingLineNumber = "111"
+                  offsetFromSymbolStart = "2012">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6AD418EE-AE39-44FA-8CB0-CFBAB4E43CC8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "firebase-coping-strats/TutorController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "SignIn(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
