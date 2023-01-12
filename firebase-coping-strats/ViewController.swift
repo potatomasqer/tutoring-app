@@ -16,7 +16,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     var retrievedURL: URL!
     var locationManager = CLLocationManager()
     let defaults = UserDefaults.standard
-    var FireBase = FBC()
+    
     
     @IBOutlet weak var TestLabel: UILabel!
     
@@ -25,7 +25,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
-        getUserLocation()
+        locationManager.delegate = self
+        StartUserLocation()
         
     }
     
@@ -61,50 +62,81 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
 
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        manager.allowsBackgroundLocationUpdates = true
-        manager.startUpdatingLocation()
-        
-        if locations.first != nil {
-            //pick the closest location
-            let d = 999999999.0
-            var loc:CLLocation = CLLocation(latitude: 99.9, longitude: 99.9)
-            let target = CLLocation(latitude: 42.07978319, longitude: -87.95002423)
-            for L in locations{
-                if  (L.distance(from: target).binade < d){
-                    loc = L
-                }
-            }
-            
-            
-            print(loc.distance(from: target))
-            //do things
-            let state = defaults.string(forKey: "signIn")
-            
-            if ((loc.distance(from: target).binade) > 31.55511715 && state != "signed out"){
-                print((loc.distance(from: target).binade))
-                
-                let name = defaults.string(forKey: "Name")
-                
-                let id = defaults.string(forKey: "StudentID")
-                
-                let cords = String(loc.coordinate.latitude) + ", " + String(loc.coordinate.longitude)
-                
-                
-                let dateTimeComponents = userCalendar.dateComponents(requestedComponents, from: currentDateTime)
-                
-                let CurentDate = String(dateTimeComponents.month!) + "/" + String(dateTimeComponents.day!) + ", " + time
-                time = String(dateTimeComponents.hour!) + ":" + String(dateTimeComponents.minute!)
-
-                FireBase.Push(Data: ["name":name!, "studentid":id!, "time":CurentDate, "state":state,"location":cords], User: name!+id!)
-                
-                
-            }
-        }
+    func StartUserLocation() {
+        locationManager.requestAlwaysAuthorization()
+        locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.startUpdatingLocation()
+        let check = SignOutCheck()
+        check.start()
     }
     
-    func getUserLocation() {
-        locationManager.requestAlwaysAuthorization()
+}
+class SignOutCheck: Thread,CLLocationManagerDelegate{
+    override func start() {
+        super.start()
+    }
+    override func main() { // Thread's starting point
+        let defaults = UserDefaults.standard
+        var locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.pausesLocationUpdatesAutomatically = false
         locationManager.startUpdatingLocation()
+        var FireBase = FBC()
+        while true{ //runs untill app turned off
+            SignOutCheck.sleep(forTimeInterval: 3)
+            //check signin value
+            let signin = defaults.string(forKey: "Statekey") ?? ""
+            print(signin)
+            if signin == "signed in"{
+                //update location
+                locationManager.requestLocation()
+                
+                // get current cords
+                let cords = String(locationManager.location?.coordinate.latitude ?? 42.07986484) + ", " + String(locationManager.location?.coordinate.longitude ?? -87.95008105)
+                //get target
+                let target = CLLocation(latitude: 42.07978319, longitude: -87.95002423)
+                //distence in meters
+                let distence = locationManager.location?.distance(from: target)
+                if distence!.binade > 31.55511715{
+                    print(distence!.binade)
+                    //outside of the zone
+                    defaults.setValue("signed out", forKey: "Statekey")
+                    let time = updateTime()
+                    FireBase.Push(Data: ["studentid":defaults.string(forKey: "StudentID")!, "time":time, "state":signin,"location":cords], User: defaults.string(forKey: "StudentID")!)
+                    //threads job is done
+                    SignOutCheck.exit()
+                }
+                
+            }
+            
+        }
+    }
+    func updateTime() -> String{
+        let userCalendar = Calendar.current
+        let currentDateTime = Date()
+        let requestedComponents: Set<Calendar.Component> = [
+            .year,
+            .month,
+            .day,
+            .hour,
+            .minute,
+            .second
+        ]
+        let dateTimeComponents = userCalendar.dateComponents(requestedComponents, from: currentDateTime)
+        var time = ""
+        if dateTimeComponents.minute! >= 10{
+         time = String(dateTimeComponents.hour!) + ":" + String(dateTimeComponents.minute!)
+        }
+        else{time = String(dateTimeComponents.hour!) + ":0" + String(dateTimeComponents.minute!)}
+        
+        
+        return String(dateTimeComponents.month!) + "/" + String(dateTimeComponents.day!) + ", " + time
+    }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        _ = 1+1
+    }
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        _ = 1+1
     }
 }

@@ -65,10 +65,7 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         
         AuthButton.titleLabel?.font = UIFont.systemFont(ofSize: 36)
         
-        locationManager.allowsBackgroundLocationUpdates = true
-        locationManager.startUpdatingLocation()
         
-        NameField.text = defaults.string(forKey: "Name")
         StudentIDField.text = defaults.string(forKey: "StudentID")
         let SBName = defaults.string(forKey: "signIn")
         if SBName == "Sign out"{
@@ -80,7 +77,7 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
             State = defaults.string(forKey: "Statekey") ?? State
         }
         
-        updateTime()
+        //updateTime()
         
         AuthButton.updateConfiguration()
         
@@ -89,17 +86,11 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         
         locationManager.requestLocation()
         
-        locationManager.allowsBackgroundLocationUpdates = true
-        
-        //let logs = FireBase.Pull(User: String(NameField.text!)+"223073")
-        //print(logs)
     }
     
     
     @IBAction func SignIn(_ sender: UIButton){
         updateTime()
-        let name = NameField.text!
-        defaults.set(name, forKey: "Name")
         let id = StudentIDField.text!
         defaults.set(id, forKey: "StudentID")
         
@@ -119,7 +110,7 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
             State = "signed in"
             AuthButton.setTitle("Sign Out", for: .normal)
 
-            localData.append(String(State + ", " + CurentDate + "; " + name + ", " + id))
+            localData.append(String(State + ", " + CurentDate + "; "  + ", " + id))
             
             
 
@@ -127,7 +118,7 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
             defaults.set("Sign out", forKey: "signIn")
             updateTime()
             
-            FireBase.Push(Data: ["name":name, "studentid":id, "time":CurentDate, "state":State,"location":cords], User: name+id)
+            FireBase.Push(Data: ["studentid":id, "time":CurentDate, "state":State,"location":cords], User: id)
             
             StateLabel.text = "You are currently " + State + "."
             
@@ -139,7 +130,7 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
             if !authorized{
                 locationManager.requestAlwaysAuthorization()
             }
-            localData.append(String(State + ", " + CurentDate + "; " + name + ", " + id))
+            localData.append(String(State + ", " + CurentDate + "; " + ", " + id))
             
             
             
@@ -147,7 +138,7 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
             defaults.set("Sign in", forKey: "signIn")
 
             updateTime()
-            FireBase.Push(Data: ["name":name, "studentid":id, "time":CurentDate, "state":State,"location":cords], User: name+id)
+            FireBase.Push(Data: ["studentid":id, "time":CurentDate, "state":State,"location":cords], User: id)
             
             StateLabel.text = "You are currently " + State + "."
             
@@ -171,9 +162,8 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         }
         defaults.set(authorized, forKey: "authorized")
     }
-
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        continue
+        _ = 1+1
     }
 }
 
