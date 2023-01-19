@@ -14,13 +14,13 @@
             filePath = "firebase-coping-strats/TutorController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "SignIn(_:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "C794B9B4-212E-45DF-A0B1-7E6BB9CF5283 - 69a8766fc24768e4"
+                  uuid = "C794B9B4-212E-45DF-A0B1-7E6BB9CF5283 - 69a8766fc24768a6"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -30,12 +30,12 @@
                   urlString = "file:///Users/abrey3073/Documents/GitHub/tutoring-app/firebase-coping-strats/TutorController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "111"
-                  endingLineNumber = "111"
-                  offsetFromSymbolStart = "1692">
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "1752">
                </Location>
                <Location
-                  uuid = "C794B9B4-212E-45DF-A0B1-7E6BB9CF5283 - 69a8766fc24768e4"
+                  uuid = "C794B9B4-212E-45DF-A0B1-7E6BB9CF5283 - 69a8766fc24768a6"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -45,9 +45,9 @@
                   urlString = "file:///Users/abrey3073/Documents/GitHub/tutoring-app/firebase-coping-strats/TutorController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "111"
-                  endingLineNumber = "111"
-                  offsetFromSymbolStart = "2012">
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "2072">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -62,9 +62,57 @@
             filePath = "firebase-coping-strats/TutorController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "SignIn(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "880FDBC6-BD65-45AE-866F-D84094FCE2F1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "firebase-coping-strats/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "StartUserLocation()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0FB197FC-4812-4ED7-8BFA-5B76E95A1CD3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "firebase-coping-strats/GatherController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "ok(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FD6ABDCD-AC71-4B88-BA53-0F4348B608BC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "firebase-coping-strats/FBC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "PushGoogle(Data:User:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

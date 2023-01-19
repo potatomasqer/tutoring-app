@@ -31,7 +31,7 @@ class FBC{
         Database.database(url: BaseRefrence).reference().child("/perm/"+User+"/").childByAutoId().setValue(Data)
     }
     public func PushGoogle(Data:Dictionary<String, Any>,User: String){
-        Database.database(url: BaseRefrence).reference().child("/helped/").childByAutoId().setValue(Data)
+        Database.database(url: BaseRefrence).reference().child("/helped/"+User+"/").childByAutoId().setValue(Data)
     }
 
     
