@@ -23,6 +23,9 @@ class GatherController: UIViewController {
     var dictionary = [String:Int]()
     var subjectArray = [String]()
     var timeSpent = 0
+    let firebase = FBC()
+    let defaults = UserDefaults.standard
+    var gradelevel = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         subjectTextField.text = ""
@@ -42,6 +45,7 @@ class GatherController: UIViewController {
         timeTextField.isHidden = false
         cancelButton.isHidden = false
         okButton.isHidden = false
+        gradelevel = "freshmen"
     }
     
     @IBAction func sophomore(_ sender: UIButton) {
@@ -55,6 +59,7 @@ class GatherController: UIViewController {
         timeTextField.isHidden = false
         cancelButton.isHidden = false
         okButton.isHidden = false
+        gradelevel = "sophmore"
     }
     
     @IBAction func junior(_ sender: UIButton) {
@@ -68,6 +73,7 @@ class GatherController: UIViewController {
         timeTextField.isHidden = false
         cancelButton.isHidden = false
         okButton.isHidden = false
+        gradelevel = "junior"
     }
     
     @IBAction func senior(_ sender: UIButton) {
@@ -81,6 +87,7 @@ class GatherController: UIViewController {
         timeTextField.isHidden = false
         cancelButton.isHidden = false
         okButton.isHidden = false
+        gradelevel = "senior"
     }
     
     @IBAction func ok(_ sender: UIButton) {
@@ -111,6 +118,9 @@ class GatherController: UIViewController {
             timeSpent += time
             dictionary["\(IDTextField.text!)"] = time
             subjectArray.append(subjectTextField.text!)
+            
+            firebase.PushGoogle(Data: ["helpedId":IDTextField.text!,"time":Int(timeTextField.text!)!,"subject":subjectTextField.text!,"gradelevel":gradelevel], User: defaults.string(forKey: "StudentID") ?? "0")
+            
             textLabel.isHidden = false
             froshButton.isHidden = false
             sophButton.isHidden = false

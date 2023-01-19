@@ -76,12 +76,12 @@ class SignOutCheck: Thread,CLLocationManagerDelegate{
     }
     override func main() { // Thread's starting point
         let defaults = UserDefaults.standard
-        var locationManager = CLLocationManager()
+        let locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.pausesLocationUpdatesAutomatically = false
         locationManager.startUpdatingLocation()
-        var FireBase = FBC()
+        let FireBase = FBC()
         while true{ //runs untill app turned off
             SignOutCheck.sleep(forTimeInterval: 3)
             //check signin value
