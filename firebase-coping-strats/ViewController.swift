@@ -105,6 +105,8 @@ class SignOutCheck: Thread,CLLocationManagerDelegate{
                     let time = updateTime()
                     FireBase.Push(Data: ["studentid":defaults.string(forKey: "StudentID")!, "time":time, "state":signin,"location":cords], User: defaults.string(forKey: "StudentID")!)
                     //threads job is done
+                    
+                    
                     self.Exit()
                 }
                 
