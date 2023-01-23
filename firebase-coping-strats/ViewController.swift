@@ -26,7 +26,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
         locationManager.delegate = self
-        StartUserLocation()
         
     }
     
@@ -85,7 +84,7 @@ class SignOutCheck: Thread,CLLocationManagerDelegate{
         while true{ //runs untill app turned off
             SignOutCheck.sleep(forTimeInterval: 3)
             //check signin value
-            let signin = defaults.string(forKey: "Statekey") ?? ""
+            var signin = defaults.string(forKey: "Statekey") ?? ""
             print(signin)
             if signin == "signed in"{
                 //update location
@@ -100,17 +99,25 @@ class SignOutCheck: Thread,CLLocationManagerDelegate{
                 if distence!.binade > 31.55511715{
                     print(distence!.binade)
                     //outside of the zone
-                    defaults.setValue("signed out", forKey: "Statekey")
+                    signin = "signed out"
+                    defaults.setValue(signin, forKey: "Statekey")
+                    defaults.setValue("Sign out", forKey: "signIn")
                     let time = updateTime()
                     FireBase.Push(Data: ["studentid":defaults.string(forKey: "StudentID")!, "time":time, "state":signin,"location":cords], User: defaults.string(forKey: "StudentID")!)
                     //threads job is done
-                    SignOutCheck.exit()
+                    self.Exit()
                 }
                 
             }
             
         }
     }
+    func Exit(){
+        SignOutCheck.exit()
+    }
+    
+    
+    
     func updateTime() -> String{
         let userCalendar = Calendar.current
         let currentDateTime = Date()

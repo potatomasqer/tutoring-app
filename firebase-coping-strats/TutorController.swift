@@ -24,6 +24,7 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
     
     
     var FireBase = FBC()
+    let SOC = SignOutCheck()
     
     
     let defaults = UserDefaults.standard
@@ -69,15 +70,14 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         StudentIDField.text = defaults.string(forKey: "StudentID")
         let SBName = defaults.string(forKey: "signIn")
         if SBName == "Sign out"{
-            AuthButton.setTitle(SBName, for: .normal)
-                
+            AuthButton.setTitle(SBName, for: .application)
         }
         
         if defaults.string(forKey: "Statekey") == "signed in"{
             State = defaults.string(forKey: "Statekey") ?? State
         }
         
-        //updateTime()
+        updateTime()
         
         AuthButton.updateConfiguration()
         
@@ -113,7 +113,7 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
             localData.append(String(State + ", " + CurentDate + "; "  + ", " + id))
             
             
-
+            SOC.start()
             defaults.set(State, forKey: "Statekey")
             defaults.set("Sign out", forKey: "signIn")
             updateTime()
@@ -125,6 +125,8 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         }else if State == "signed in" { //state = signed in
             State = "signed out"
             AuthButton.setTitle("Sign In", for: .normal)
+            
+            SOC.Exit()
             
             authorized = defaults.bool(forKey: "authorized")
             if !authorized{
@@ -164,6 +166,13 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         _ = 1+1
+    }
+    func updateButton(){
+        let SBName = defaults.string(forKey: "signIn")
+        if SBName == "Sign out"{
+            AuthButton.setTitle(SBName, for: .application)
+        }
+        AuthButton.updateConfiguration()
     }
 }
 
