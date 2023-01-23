@@ -112,8 +112,9 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
 
             localData.append(String(State + ", " + CurentDate + "; "  + ", " + id))
             
-            
-            SOC.start()
+            if !SOC.isExecuting{
+                SOC.start()
+            }
             defaults.set(State, forKey: "Statekey")
             defaults.set("Sign out", forKey: "signIn")
             updateTime()
