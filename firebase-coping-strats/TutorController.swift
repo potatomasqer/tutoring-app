@@ -88,7 +88,7 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         locationManager.requestLocation()
         
     }
-    viewdid
+    
     @IBAction func SignIn(_ sender: UIButton){
         updateTime()
         let id = StudentIDField.text!
