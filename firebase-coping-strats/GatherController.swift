@@ -27,6 +27,7 @@ class GatherController: UIViewController {
     let defaults = UserDefaults.standard
     var gradelevel = ""
     override func viewDidLoad() {
+        overrideUserInterfaceStyle = .light
         super.viewDidLoad()
         subjectTextField.text = ""
         IDTextField.text = ""
