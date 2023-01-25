@@ -16,15 +16,12 @@ import SwiftUI
 class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate,UITableViewDelegate {
     
     @IBOutlet weak var CurrentTime: UITextView!
-    @IBOutlet weak var NameField: UITextField!
     @IBOutlet weak var AuthButton: UIButton!
-    @IBOutlet weak var SignLabel: UILabel!
     @IBOutlet weak var StudentIDField: UITextField!
     @IBOutlet weak var StateLabel: UILabel!
     
     
     var FireBase = FBC()
-    let SOC = SignOutCheck()
     
     
     let defaults = UserDefaults.standard
@@ -111,10 +108,9 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
             AuthButton.setTitle("Sign Out", for: .normal)
 
             localData.append(String(State + ", " + CurentDate + "; "  + ", " + id))
+            let SOC = SignOutCheck()
+            SOC.start()
             
-            if !SOC.isExecuting{
-                SOC.start()
-            }
             defaults.set(State, forKey: "Statekey")
             defaults.set("Sign out", forKey: "signIn")
             updateTime()
@@ -126,8 +122,6 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         }else if State == "signed in" { //state = signed in
             State = "signed out"
             AuthButton.setTitle("Sign In", for: .normal)
-            
-            SOC.Exit()
             
             authorized = defaults.bool(forKey: "authorized")
             if !authorized{
@@ -144,14 +138,26 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
             FireBase.Push(Data: ["studentid":id, "time":CurentDate, "state":State,"location":cords], User: id)
             
             StateLabel.text = "You are currently " + State + "."
-            
-            
-            
         }
-        //print(State)
 
+    }
+    
+    @IBAction func GatherDataPress(_ sender: UIButton) {
+        //desplay opisite
+        var sign = defaults.string(forKey: "signIn")
+        if sign == "Sign out"{
+            sign = "Sign in"
+            State = "signed out"
+        }else{
+            sign = "Sign out"
+            State = "signed in"
         }
         
+        AuthButton.setTitle(sign, for: .normal)
+        StateLabel.text = "You are curretly " + State + "."
+    }
+    
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
          print("error:: \(error.localizedDescription)")
     }
@@ -167,13 +173,6 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         _ = 1+1
-    }
-    func updateButton(){
-        let SBName = defaults.string(forKey: "signIn")
-        if SBName == "Sign out"{
-            AuthButton.setTitle(SBName, for: .application)
-        }
-        AuthButton.updateConfiguration()
     }
 }
 

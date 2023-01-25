@@ -33,32 +33,6 @@ class FBC{
     public func PushGoogle(Data:Dictionary<String, Any>,User: String){
         Database.database(url: BaseRefrence).reference().child("/helped/"+User+"/").childByAutoId().setValue(Data)
     }
-
-    
-    public func Pull(User: String) -> [String]{
-        //get data
-        var cells: [String] = [""]
-        print("geting data from " + User) //    +User+"/"
-        FirebaseRefrence.child("perm").child(User).observeSingleEvent(of: .value, with: { snapshot in
-
-            let dict = snapshot.value as? NSDictionary
-            let values = dict?.allValues
-            let keys = dict?.allKeys
-            
-            
-            
-            //now make that into cells
-            cells = self.CellMaker(dict: dict!, keys: keys as! [String])
-                        
-
-              // ...
-            }) { error in
-              print(error.localizedDescription)
-            }
-        return cells
-        
-        
-    }
     private func CellMaker(dict:NSDictionary,keys:[String]) -> [String]{
         var cells: [String] = []
         if keys.count > 1{
