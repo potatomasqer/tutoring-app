@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4EE8905C2948E24A008E2560 /* GatherController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE8905B2948E24A008E2560 /* GatherController.swift */; };
+		716ACE8329AD0DA800622212 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 716ACE8229AD0DA800622212 /* Launch Screen.storyboard */; };
 		9810E9FF28DD3B2C002B172A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9810E9FE28DD3B2C002B172A /* AppDelegate.swift */; };
 		9810EA0128DD3B2C002B172A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9810EA0028DD3B2C002B172A /* SceneDelegate.swift */; };
 		9810EA0328DD3B2C002B172A /* TutorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9810EA0228DD3B2C002B172A /* TutorController.swift */; };
@@ -68,6 +69,7 @@
 
 /* Begin PBXFileReference section */
 		4EE8905B2948E24A008E2560 /* GatherController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatherController.swift; sourceTree = "<group>"; };
+		716ACE8229AD0DA800622212 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		9810E9FB28DD3B2C002B172A /* firebase-coping-strats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "firebase-coping-strats.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9810E9FE28DD3B2C002B172A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9810EA0028DD3B2C002B172A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 		9810E9F228DD3B2C002B172A = {
 			isa = PBXGroup;
 			children = (
+				716ACE8229AD0DA800622212 /* Launch Screen.storyboard */,
 				9810E9FD28DD3B2C002B172A /* firebase-coping-strats */,
 				9810EA1428DD3B2E002B172A /* firebase-coping-stratsTests */,
 				9810EA1E28DD3B2E002B172A /* firebase-coping-stratsUITests */,
@@ -332,6 +335,7 @@
 				9810EA0B28DD3B2E002B172A /* LaunchScreen.storyboard in Resources */,
 				9810EA3028DD4546002B172A /* GoogleService-Info.plist in Resources */,
 				9810EA0828DD3B2E002B172A /* Assets.xcassets in Resources */,
+				716ACE8329AD0DA800622212 /* Launch Screen.storyboard in Resources */,
 				9810EA0628DD3B2C002B172A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

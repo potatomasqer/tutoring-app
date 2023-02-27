@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WVc-Je-PGy">
-    <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WVc-Je-PGy">
+    <device id="ipad12_9" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,17 +14,15 @@
             <objects>
                 <viewController id="WVc-Je-PGy" customClass="ViewController" customModule="firebase_coping_strats" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q5U-fj-Cnk">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.125" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="output-onlinepngtools_1024x1024" translatesAutoresizingMaskIntoConstraints="NO" id="Vg5-3g-FiE">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.125" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="output-onlinepngtools_1024x1024" translatesAutoresizingMaskIntoConstraints="NO" id="Vg5-3g-FiE">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4I-in-FZ3">
-                                <rect key="frame" x="0.0" y="959" width="153" height="65"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4I-in-FZ3">
+                                <rect key="frame" x="0.0" y="1272" width="153" height="38"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="gear" catalog="system" title="Tutor Logs">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
@@ -34,9 +32,12 @@
                                     <action selector="segueButton:" destination="cnU-DY-guH" eventType="touchUpInside" id="VDz-0b-QjN"/>
                                 </connections>
                             </button>
-                            <button contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLt-TD-LcJ">
-                                <rect key="frame" x="300" y="494" width="169" height="77"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLt-TD-LcJ">
+                                <rect key="frame" x="427.5" y="644.5" width="169" height="77"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="77" id="3OR-fD-uiM"/>
+                                    <constraint firstAttribute="width" constant="169" id="Cgx-Lh-VZm"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Log In" cornerStyle="large">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="36"/>
@@ -45,9 +46,12 @@
                                     <segue destination="BYZ-38-t0r" kind="presentation" id="vst-U9-B7h"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yrv-SG-GEr">
-                                <rect key="frame" x="218" y="128" width="333" height="112"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yrv-SG-GEr">
+                                <rect key="frame" x="410" y="128" width="204.5" height="112"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="112" id="Aqb-7l-lfA"/>
+                                    <constraint firstAttribute="width" constant="204.5" id="P1e-io-iD3"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="48"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -55,23 +59,39 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="54h-ib-4tc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Yrv-SG-GEr" firstAttribute="centerX" secondItem="Q5U-fj-Cnk" secondAttribute="centerX" id="3dD-HK-Ejz"/>
+                            <constraint firstItem="Yrv-SG-GEr" firstAttribute="centerX" secondItem="Q5U-fj-Cnk" secondAttribute="centerX" id="7Kp-J9-ppg"/>
+                            <constraint firstItem="Yrv-SG-GEr" firstAttribute="top" secondItem="54h-ib-4tc" secondAttribute="top" constant="108" id="7iu-Nn-UFa"/>
+                            <constraint firstItem="dLt-TD-LcJ" firstAttribute="centerX" secondItem="Q5U-fj-Cnk" secondAttribute="centerX" id="BHl-lq-mKm"/>
+                            <constraint firstItem="Vg5-3g-FiE" firstAttribute="top" secondItem="Q5U-fj-Cnk" secondAttribute="top" id="BU2-db-eKk"/>
+                            <constraint firstItem="Vg5-3g-FiE" firstAttribute="trailing" secondItem="54h-ib-4tc" secondAttribute="trailing" id="CQE-bJ-fhH"/>
+                            <constraint firstItem="Vg5-3g-FiE" firstAttribute="bottom" secondItem="54h-ib-4tc" secondAttribute="bottom" id="ECB-Zv-5Bp"/>
+                            <constraint firstItem="Vg5-3g-FiE" firstAttribute="top" secondItem="Q5U-fj-Cnk" secondAttribute="topMargin" id="MCi-wL-PFP"/>
+                            <constraint firstItem="dLt-TD-LcJ" firstAttribute="centerY" secondItem="Q5U-fj-Cnk" secondAttribute="centerY" id="R7I-AH-WrE"/>
+                            <constraint firstItem="Vg5-3g-FiE" firstAttribute="leading" secondItem="54h-ib-4tc" secondAttribute="leading" id="Xmy-Dn-DDH"/>
+                            <constraint firstItem="Yrv-SG-GEr" firstAttribute="centerX" secondItem="Q5U-fj-Cnk" secondAttribute="centerX" id="bs7-ov-JpU"/>
+                            <constraint firstItem="54h-ib-4tc" firstAttribute="bottom" secondItem="g4I-in-FZ3" secondAttribute="bottom" constant="56" id="oKR-r5-uVX"/>
+                            <constraint firstItem="54h-ib-4tc" firstAttribute="bottom" secondItem="Vg5-3g-FiE" secondAttribute="bottom" id="vc3-uo-Im1"/>
+                            <constraint firstItem="54h-ib-4tc" firstAttribute="trailing" secondItem="Vg5-3g-FiE" secondAttribute="trailing" id="yuR-Gc-8ZZ"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8cS-gx-NUD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="cnU-DY-guH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1563.28125" y="856.640625"/>
+            <point key="canvasLocation" x="1562.9629629629628" y="856.11111111111109"/>
         </scene>
         <!--Tutor Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="TutorController" customModule="firebase_coping_strats" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="704" height="984"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" fixedFrame="YES" editable="NO" text="Time" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1o-d6-oVH">
-                                <rect key="frame" x="157" y="70" width="390" height="118"/>
+                                <rect key="frame" x="157" y="68" width="390" height="119"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -159,7 +179,7 @@
             <objects>
                 <viewController id="OEI-vH-Ggy" customClass="GatherController" customModule="firebase_coping_strats" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bkN-WR-xzP">
-                        <rect key="frame" x="0.0" y="0.0" width="704" height="984"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0625" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="output-onlinepngtools_1024x1024" translatesAutoresizingMaskIntoConstraints="NO" id="Cmy-ft-J5s">
