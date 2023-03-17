@@ -47,6 +47,7 @@
 		9810EA6528DD49D6002B172A /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9810EA6428DD49D6002B172A /* FirebaseStorage */; };
 		9810EA6728DD49D6002B172A /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 9810EA6628DD49D6002B172A /* FirebaseStorageCombine-Community */; };
 		98EB5B2D28E52BB100892544 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EB5B2C28E52BB100892544 /* ViewController.swift */; };
+		A68B1F0A29C22505006A550B /* PreviousDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68B1F0929C22505006A550B /* PreviousDataController.swift */; };
 		A6AD19542939131900B42D4F /* FBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AD19532939131900B42D4F /* FBC.swift */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,7 @@
 		9810EA2128DD3B2E002B172A /* firebase_coping_stratsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firebase_coping_stratsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9810EA2F28DD4546002B172A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		98EB5B2C28E52BB100892544 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A68B1F0929C22505006A550B /* PreviousDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousDataController.swift; sourceTree = "<group>"; };
 		A6AD19532939131900B42D4F /* FBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,10 +168,11 @@
 			children = (
 				9810E9FE28DD3B2C002B172A /* AppDelegate.swift */,
 				9810EA0028DD3B2C002B172A /* SceneDelegate.swift */,
+				A6AD19532939131900B42D4F /* FBC.swift */,
 				98EB5B2C28E52BB100892544 /* ViewController.swift */,
 				9810EA0228DD3B2C002B172A /* TutorController.swift */,
 				4EE8905B2948E24A008E2560 /* GatherController.swift */,
-				A6AD19532939131900B42D4F /* FBC.swift */,
+				A68B1F0929C22505006A550B /* PreviousDataController.swift */,
 				9810EA0428DD3B2C002B172A /* Main.storyboard */,
 				9810EA0728DD3B2E002B172A /* Assets.xcassets */,
 				9810EA0928DD3B2E002B172A /* LaunchScreen.storyboard */,
@@ -362,6 +365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EE8905C2948E24A008E2560 /* GatherController.swift in Sources */,
+				A68B1F0A29C22505006A550B /* PreviousDataController.swift in Sources */,
 				98EB5B2D28E52BB100892544 /* ViewController.swift in Sources */,
 				9810EA0328DD3B2C002B172A /* TutorController.swift in Sources */,
 				9810E9FF28DD3B2C002B172A /* AppDelegate.swift in Sources */,

@@ -97,63 +97,68 @@ class TutorController: UIViewController, UITextFieldDelegate, CLLocationManagerD
         if !authorized{
             locationManager.requestWhenInUseAuthorization()
         }
-        
-        //location stuff
-        let location = locationManager.location
-        locationManager.requestLocation()
-        let cords = String(location?.coordinate.latitude ?? 42.07986484) + ", " + String(location?.coordinate.longitude ?? -87.95008105)
-        if State == "signed out"{
-            //sign in
-            State = "signed in"
-            AuthButton.setTitle("Sign Out", for: .normal)
-
-            localData.append(String(State + ", " + CurentDate + "; "  + ", " + id))
-            let SOC = SignOutCheck()
-            SOC.start()
-            
-            defaults.set(State, forKey: "Statekey")
-            defaults.set("Sign out", forKey: "signIn")
-            updateTime()
-            
-            FireBase.Push(Data: ["studentid":id, "time":CurentDate, "state":State,"location":cords], User: id)
-            
-            StateLabel.text = "You are currently " + State + "."
-            
-        }else if State == "signed in" { //state = signed in
-            State = "signed out"
-            AuthButton.setTitle("Sign In", for: .normal)
-            
-            authorized = defaults.bool(forKey: "authorized")
-            if !authorized{
-                locationManager.requestAlwaysAuthorization()
+        if id != ""{
+            //location stuff
+            let location = locationManager.location
+            locationManager.requestLocation()
+            let cords = String(location?.coordinate.latitude ?? 42.07986484) + ", " + String(location?.coordinate.longitude ?? -87.95008105)
+            if State == "signed out"{
+                //sign in
+                State = "signed in"
+                AuthButton.setTitle("Sign Out", for: .normal)
+                
+                localData.append(String(State + ", " + CurentDate + "; "  + ", " + id))
+                let SOC = SignOutCheck()
+                SOC.start()
+                
+                defaults.set(State, forKey: "Statekey")
+                defaults.set("Sign out", forKey: "signIn")
+                updateTime()
+                
+                FireBase.Push(Data: ["studentid":id, "time":CurentDate, "state":State,"location":cords], User: id)
+                
+                StateLabel.text = "You are currently " + State + "."
+                
+            }else if State == "signed in" { //state = signed in
+                State = "signed out"
+                AuthButton.setTitle("Sign In", for: .normal)
+                
+                authorized = defaults.bool(forKey: "authorized")
+                if !authorized{
+                    locationManager.requestAlwaysAuthorization()
+                }
+                localData.append(String(State + ", " + CurentDate + "; " + ", " + id))
+                
+                
+                
+                defaults.set(State, forKey: "Statekey")
+                defaults.set("Sign in", forKey: "signIn")
+                
+                updateTime()
+                FireBase.Push(Data: ["studentid":id, "time":CurentDate, "state":State,"location":cords], User: id)
+                
+                StateLabel.text = "You are currently " + State + "."
             }
-            localData.append(String(State + ", " + CurentDate + "; " + ", " + id))
-            
-            
-            
-            defaults.set(State, forKey: "Statekey")
-            defaults.set("Sign in", forKey: "signIn")
-
-            updateTime()
-            FireBase.Push(Data: ["studentid":id, "time":CurentDate, "state":State,"location":cords], User: id)
-            
-            StateLabel.text = "You are currently " + State + "."
+        }else{
+            //id is invalid
+            let alert = UIAlertController(title: "Incomplete form", message: "Fill out the student id field", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
-
     }
     
     @IBAction func GatherDataPress(_ sender: UIButton) {
         //desplay opisite
-        var sign = defaults.string(forKey: "signIn")
-        if sign == "Sign out"{
-            sign = "Sign in"
-            State = "signed out"
-        }else{
-            sign = "Sign out"
-            State = "signed in"
+        let sign = defaults.string(forKey: "Statekey")
+        if sign != State{
+            State = sign!
         }
-        
-        AuthButton.setTitle(sign, for: .normal)
+        if sign == "signed out" && AuthButton.titleLabel?.text! != "Sign In"{
+            AuthButton.setTitle("Sign In", for: .normal)
+        }
+        if sign == "signed in" && AuthButton.titleLabel?.text! != "Sign Out"{
+            AuthButton.setTitle("Sign Out", for: .normal)
+        }
         StateLabel.text = "You are curretly " + State + "."
     }
     

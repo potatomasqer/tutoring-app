@@ -50,7 +50,7 @@ class SignOutCheck: Thread,CLLocationManagerDelegate{
         locationManager.pausesLocationUpdatesAutomatically = false
         locationManager.startUpdatingLocation()
         let FireBase = FBC()
-        while true{ //runs untill app turned off
+        while true{ //runs until app turned off
             SignOutCheck.sleep(forTimeInterval: 3)
             //check signin value
             var signin = defaults.string(forKey: "Statekey") ?? ""
@@ -58,14 +58,13 @@ class SignOutCheck: Thread,CLLocationManagerDelegate{
             if signin == "signed in"{
                 //update location
                 locationManager.requestLocation()
-                
                 // get current cords
                 let cords = String(locationManager.location?.coordinate.latitude ?? 42.07986484) + ", " + String(locationManager.location?.coordinate.longitude ?? -87.95008105)
                 //get target
                 let target = CLLocation(latitude: 42.07978319, longitude: -87.95002423)
                 //distence in meters
                 let distence = locationManager.location?.distance(from: target)
-                if distence!.binade > 31.55511715{
+                if distence!.binade > 39.5{
                     print(distence!.binade)
                     //outside of the zone
                     signin = "signed out"
@@ -74,8 +73,6 @@ class SignOutCheck: Thread,CLLocationManagerDelegate{
                     let time = updateTime()
                     FireBase.Push(Data: ["studentid":defaults.string(forKey: "StudentID")!, "time":time, "state":signin,"location":cords], User: defaults.string(forKey: "StudentID")!)
                     //threads job is done
-                    
-                    
                     self.Exit()
                 }
                 
