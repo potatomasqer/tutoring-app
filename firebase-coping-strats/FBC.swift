@@ -20,11 +20,12 @@ import CoreLocation
 
 class FBC{
     let FirebaseRefrence = Database.database(url: "https://tutor-6e628-default-rtdb.firebaseio.com/").reference()
-    let PermRefrence = "https://tutor-6e628-default-rtdb.firebaseio.com/perm/"
     let BaseRefrence = "https://tutor-6e628-default-rtdb.firebaseio.com/"
+    var RecevedData:[[String]]
+    
     //init
-    public func FBC(){
-        
+    init() {
+        self.RecevedData = []
     }
     
     //push to firebase
@@ -35,30 +36,34 @@ class FBC{
     public func PushGoogle(Data:Dictionary<String, Any>,User: String){
         Database.database(url: BaseRefrence).reference().child("/helped/"+User+"/").childByAutoId().setValue(Data)
     }
-    public func PullPerm(Id:String) -> [[String]]{
+    public func PullPerm(Id:String){
         var cells: [[String]] = []
-        print("Student id: "+Id)
         FirebaseRefrence.child("/perm/").child(Id+"/").observeSingleEvent(of: .value, with: { snapshot in
             // Get user value
             let value = snapshot.value as? NSDictionary
             let keys = value?.allKeys
             for k in keys!{
                 let block = value![k]! as? NSDictionary
-                print(block ?? "nothing lol")
                 let inLib = String(self.ParceLoc(Str: block?["location"] as? String ?? "1, 1"))
                 let state = block?["state"] as! String
                 let time = block?["time"] as! String
                 cells.append([time,state,inLib])
+            }
+            if cells.count > 0 {
+                print("Data Found for " + Id)
+                self.RecevedData = cells.sorted(by: { $0[0] > $1[0] })
+
             }
             // ...
         }) { error in
             print(error.localizedDescription)
         }
         
-        
-        return cells
     }
     
+    public func GetData() -> [[String]]{
+        return self.RecevedData
+    }
     private func ParceLoc(Str:String) -> Bool{
         if #available(iOS 16.0, *) {
             let s1 = Str.split(separator: ", ")[0]
@@ -93,4 +98,5 @@ class FBC{
         }
         return false
     }
+    
 }
